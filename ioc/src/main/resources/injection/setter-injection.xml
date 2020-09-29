@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="date" class="java.util.Date" />
+
+	<!-- 通过 bean 标记来声明自己的 Bean -->
+	<!-- 使用 bean 标记的 id  或 name 属性来指定 Bean 的名称 -->
+	<!-- 使用 bean 标记的 class 属性来指定 Bean 的类型 -->
+	<bean id="person" class="com.fullmoon.study.injection.Person" >
+		<property name="id" value="1001" />
+		<property name="name" value="老徐" />
+		<!-- name 属性指定 setter 方法对应的名称，比如 setBirthdate 就写做 birthdate -->
+		<!-- ref 属性用来指定需要引用的那个已经存在的 Bean 的 名称  -->
+		<property name="birthdate" ref="date" />
+	</bean>
+
+</beans>

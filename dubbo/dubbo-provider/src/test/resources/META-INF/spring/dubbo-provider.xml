@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                          http://www.springframework.org/schema/beans/spring-beans.xsd
+                                          http://code.alibabatech.com/schema/dubbo
+                                          http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="dubbo-sample" />
+	<dubbo:registry address="zookeeper://192.250.110.153:2181" />
+	<!--<dubbo:provider filter="UserFilter" />-->
+	<!--<dubbo:protocol name="rest" port="9026" threads="50"
+		contextpath="GateWayManagement" accepts="500" />-->
+
+	<dubbo:protocol name="dubbo" port="9027" threads="500" />
+
+	<dubbo:service interface="com.fullmoon.study.service.UserService" ref="userService" />
+
+	<bean id="userService" class="com.fullmoon.study.service.impl.UserServiceImpl" />
+
+
+</beans>

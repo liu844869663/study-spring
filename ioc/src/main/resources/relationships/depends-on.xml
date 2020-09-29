@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="userDao" 
+	         class="com.fullmoon.study.relationships.UserDao"
+	         init-method="init"
+	         depends-on="jdbcHelper"/>
+
+	<bean id="jdbcHelper" 
+			 class="com.fullmoon.study.relationships.JdbcHelper"
+			 init-method="connect" 
+			 lazy-init="true"/>
+			 
+</beans>

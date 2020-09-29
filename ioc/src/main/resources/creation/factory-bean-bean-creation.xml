@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+
+	<!-- 因为 Date 类型没有实现 FactoryBean ，因此 这里的配置将导致返回 Date 类型的实例 -->
+	<bean id="d" class="java.util.Date" />
+
+	<!-- 因为  BusFactoryBean 类实现了 FactoryBean ，因此 这里的配置将返回 BusFactoryBean 的 getObject 方法返回的对象 -->
+	<bean id="b" class="com.fullmoon.study.creation.BusFactoryBean" p:brand="百路佳客车" />
+	
+	<bean id="birthdate" 
+			 class="com.fullmoon.study.creation.DateFactoryBean"
+			 p:year="1995"
+			 p:month="5"
+			 p:date="18" />
+
+</beans>

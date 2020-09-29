@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- scope="singleton" 是默认值，表示当前的容器中只有单个实例 -->
+	<!-- scope="prototype" 每次从 容器中获得 Bean 时都会创建新的实例 -->
+	<bean id="train" class="com.fullmoon.study.creation.Train" factory-method="create" scope="prototype"/>
+	
+	<bean id="sun" class="com.fullmoon.study.creation.Sun" factory-method="getInstance" scope="prototype"/>
+
+
+</beans>

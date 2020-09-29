@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="date" class="java.util.Date" />
+	
+	<bean id="person" class="com.fullmoon.study.injection.Person" >
+		<!-- 在 bean 标记内部使用 constructor-arg 标记来指定构造方法的参数 -->
+		<constructor-arg name="name" value="老橙" />
+		<!-- constructor-arg 标记的 name 属性用来指定 参数名称，value 用来指定参数值 -->
+		<constructor-arg name="id" value="1002" />
+	</bean>
+	
+	<bean id="human" class="com.fullmoon.study.injection.Person" >
+		<constructor-arg name="id" value="1003"/>
+		<constructor-arg name="name" value="阿芳"/>
+		<constructor-arg name="gender" value="女"/>
+		<!-- 如果参数类型不是简单类型，那么就需要使用 ref 来引用其它的 Bean -->
+		<constructor-arg name="birthdate" ref="date"/>
+		<constructor-arg name="married" value="false"/>
+	</bean>
+
+</beans>

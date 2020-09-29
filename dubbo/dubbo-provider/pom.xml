@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dubbo</artifactId>
+        <groupId>com.fullmoonstudy</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dubbo-provider</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fullmoonstudy</groupId>
+            <artifactId>dubbo-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>dubbo</finalName>
+        <!-- 配置相关插件 -->
+        <plugins>
+            <!-- appassembler-maven-plugin -->
+            <!-- mvn clean package appassembler:assemble -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.10</version>
+                <configuration>
+                    <!-- 生成linux和windows两种执行脚本 -->
+                    <platforms>
+                        <platform>unix</platform>
+                        <platform>windows</platform>
+                    </platforms>
+                    <!-- jar存放的目录 -->
+                    <repositoryName>lib</repositoryName>
+                    <!-- jar包存放在指定目录的规则,默认是${groupId}/${artifactId}的目录格式,flat表示直接把jar放到目录下 -->
+                    <repositoryLayout>flat</repositoryLayout>
+                    <!-- 配置文件存放的目录 -->
+                    <configurationDirectory>conf</configurationDirectory>
+                    <!-- copy配置文件到上面目录 -->
+                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
+                    <!-- 从哪里copy配置文件(默认src/main/config) -->
+                    <configurationSourceDirectory>src/main/resources</configurationSourceDirectory>
+                    <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+                    <!-- ${project.build.directory}:target, 文件存放的根目录 -->
+                    <assembleDirectory>${project.build.directory}/dubbo-assemble</assembleDirectory>
+                    <programs>
+                        <program>
+                            <!-- 启动类 -->
+                            <mainClass>com.fullmoon.study.Application</mainClass>
+                            <!-- 生成的文件名称：dubbo.sh -->
+                            <id>dubbo</id>
+                            <!-- 配置JVM参数 -->
+                            <!--<jvmSettings>
+                                <extraArguments>
+                                    &lt;!&ndash;<extraArgument>-server</extraArgument>&ndash;&gt;
+                                    <extraArgument>-XX:+HeapDumpOnOutOfMemoryError</extraArgument>
+                                    <extraArgument>-XX:HeapDumpPath=/app/dump</extraArgument>
+                                    <extraArgument>-Xmx512m</extraArgument>
+                                    <extraArgument>-Xms512m</extraArgument>
+                                </extraArguments>
+                            </jvmSettings>-->
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <!-- 指定resources -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.yml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                    <include>*.xml</include>
+                    <include>*.yml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/META-INF/spring</directory>
+                <includes>
+                    <include>spring-mybatis.xml</include>
+                    <include>spring-mvc.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>

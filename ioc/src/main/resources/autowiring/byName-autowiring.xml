@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="date1"
+			 class="com.fullmoon.study.autowiring.DateFactoryBean"
+			 p:year="1280" 
+			 p:month="10" 
+			 p:date="10" >
+	</bean>
+	<bean id="date2"
+			 class="com.fullmoon.study.autowiring.DateFactoryBean"
+			 p:year="1273" 
+			 p:month="5" 
+			 p:date="1" >
+	</bean>
+	<bean id="yangGuo"
+			 class="com.fullmoon.study.autowiring.Hero"
+			 p:id="10001" 
+			 p:name="杨过" 
+			 p:gender="男"
+			 p:birthdate-ref="date1"
+			 autowire="byName" />
+	<bean id="friend"
+			 class="com.fullmoon.study.autowiring.Hero"
+			 p:id="9999" 
+			 p:name="龙姑娘" 
+			 p:gender="女"
+			 p:birthdate-ref="date2" />
+	<bean id="ouYangFeng"
+			 class="com.fullmoon.study.autowiring.Hero"
+			 p:id="6666" 
+			 p:name="欧阳锋" 
+			 p:gender="男" />
+</beans>

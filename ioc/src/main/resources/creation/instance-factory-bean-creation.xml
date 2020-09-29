@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 创建实例工厂对应的 Bean -->
+	<bean id="factory" 
+			 class="com.fullmoon.study.creation.CarFactory"
+			 p:name="BYD" />
+
+	<!-- factory-bean 属性用来指定 创建 Car 实例的 "工厂" 对象 -->
+	<!-- factory-method 属性用来指定 在 factory-bean 指定的那个 Bean 中用来创建 Car 的那个实例方法  -->
+	<bean id="car" factory-bean="factory" factory-method="create" />
+
+</beans>

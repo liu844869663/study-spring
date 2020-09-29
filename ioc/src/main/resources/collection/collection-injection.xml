@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="firstLuckDay" class="java.util.Date" />
+	
+	<bean id="secondLuckDay" class="java.util.Date" />
+	
+	<bean id="thirdLuckDay" class="java.util.Date" />
+
+	<bean id="zengsan" class="com.fullmoon.study.collection.Human"
+			 p:id="12345" 
+			 p:name="曾三胖子" >
+	
+		<!-- 注入 Set 集合 -->
+		<property name="favorite">
+			<set>
+				<value>吃饭</value>
+				<value>盼着吃饭</value>
+				<value>睡觉</value>
+				<value>盼着睡觉</value>
+				<value>上厕所</value>
+			</set>
+		</property>
+		
+		<!-- 注入 List 集合 -->
+		<property name="luckDay">
+			<list>
+				<!-- 使用 ref 标记来引用已经存在的 Bean -->
+				<ref bean="firstLuckDay" />
+				<ref bean="secondLuckDay" />
+				<ref bean="thirdLuckDay" />
+				<!-- 直接在 list 内部 声明一个 内部的 Bean 然后添加到集合中 -->
+				<bean class="java.util.Date" />
+			</list>
+		</property>
+		
+		<!-- 注入 Map 集合 -->
+		<property name="address">
+			<map>
+				<entry key="家庭住址" value="江西南昌新建东理" />
+				<entry>
+					<key>
+						<value>学校地址</value>
+					</key>
+					<value>江西南昌广兰大道418号</value>
+				</entry>
+			</map>
+		</property>
+		
+		<!-- 注入 Properties 集合 -->
+		<property name="infos">
+			<props>
+				<prop key="age">22</prop>
+				<prop key="weight">120</prop>
+				<prop key="height">160</prop>
+				<prop key="married">true</prop>
+			</props>
+		</property>
+			 
+	</bean>
+
+
+</beans>

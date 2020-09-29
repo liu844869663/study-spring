@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="set" class="java.util.HashSet" />
+	
+	<bean id="map" class="java.util.HashMap" />
+	
+	<bean id="list" class="java.util.LinkedHashSet" />
+	
+	<bean id="props" class="java.util.Properties" />
+	
+	<bean id="date" class="java.util.Date" />
+	
+	<bean id="names" class="com.fullmoon.study.relationships.Names" >
+		<property name="name1" >
+			<idref bean="set"/>
+		</property>
+		<property name="name2" >
+			<idref bean="list"/>
+		</property>
+		<property name="name3" >
+			<idref bean="date"/>
+		</property>
+	</bean>
+
+
+</beans>

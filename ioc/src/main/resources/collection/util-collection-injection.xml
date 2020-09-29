@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+	<!-- Spring Framework 3.x 开始允许使用 util 命名空间来直接声明一个集合对应 Bean -->
+	<util:set id="set" set-class="java.util.HashSet" value-type="java.lang.String">
+		<value>吃饭</value>
+		<value>盼着吃饭</value>
+		<value>睡觉</value>
+		<value>盼着睡觉</value>
+		<value>上厕所</value>
+	</util:set>
+	
+	<util:list id="list" list-class="java.util.LinkedList" value-type="java.util.Date" >
+		<bean class="java.util.Date" />
+		<bean class="java.util.Date" />
+	</util:list>
+	
+	<util:map id="map" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.String">
+				<entry key="家庭住址" value="江西南昌新建东理" />
+				<entry key="学校地址" value="江西南昌广兰大道418号西1宿舍2楼" />
+	</util:map>
+
+	<util:properties id="properties">
+		<prop key="age">22</prop>
+		<prop key="weight">120</prop>
+		<prop key="height">160</prop>
+		<prop key="married">true</prop>
+	</util:properties>
+
+	<bean id="zengsan" class="com.fullmoon.study.collection.Human"
+			 p:id="12345" 
+			 p:name="曾三胖子" 
+			 p:favorite-ref="set" 
+			 p:luckDay-ref="list" 
+			 p:address-ref="map" 
+			 p:infos-ref="properties">
+	</bean>
+
+
+</beans>

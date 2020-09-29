@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="dog" class="com.fullmoon.study.lifecycle.Dog"
+			 init-method="init" 
+			 destroy-method="destory" >
+		<property name="id" value="250" />
+		<property name="name" value="谁吵吵谁他妈是条狗" />
+	</bean>
+
+</beans>
